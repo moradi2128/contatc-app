@@ -6,6 +6,7 @@ import { addContact } from "../redux/contants/contactAtion";
 
 const Add = () => {
   const contacts = useSelector((state) => state.allContact);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -13,11 +14,12 @@ const Add = () => {
   const [number, setNumber] = useState("");
 
   const handlerForm = (e) => {
-    
     e.preventDefault();
-    const checkEmail = contacts.find((contact) => contact.email === email && contact);
+    const checkEmail = contacts.find(
+      (contact) => contact.email === email && contact
+    );
     const checkNumber = contacts.find(
-      (contact) => contact.number === parseInt(number)
+      (contact) => contact.number === number
     );
 
     if (!name || !email || !number) {
@@ -29,8 +31,15 @@ const Add = () => {
     if (checkNumber) {
       return toast.error("This number already Exists!");
     }
+    let id = null;
+    if (contacts.length === 0) {
+      id = 0;
+    } else {
+      id = contacts[contacts.length - 1].id + 1;
+    }
+
     const data = {
-      id: contacts[contacts.length - 1].id + 1,
+      id: id,
       name,
       number,
       email,
@@ -44,7 +53,7 @@ const Add = () => {
     <div className="container">
       <h1 className="display-3 text-center my-5">Add Contact</h1>
       <div className="row"></div>
-      <div className="col-md-6 shadow mx-auto p-5">
+      <div className="col-md-6 shadow mx-auto p-5 bg-main">
         <form onSubmit={handlerForm}>
           <div className="form-group">
             <input
@@ -77,7 +86,7 @@ const Add = () => {
             <input
               type="submit"
               value="Add"
-              className="btn btn-block btn-dark"
+              className="btn btn-block btn-dark btn-main"
             />
           </div>
         </form>

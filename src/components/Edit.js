@@ -60,7 +60,7 @@ const Edit = () => {
             Edit Contact {parseInt(editId) + 1}
           </h1>
           <div className="row">
-            <div className="col-md-6 shadow mx-auto p-5">
+            <div className="col-md-6 shadow mx-auto p-5 bg-main">
               <form onSubmit={handlerForm}>
                 <div className="form-group">
                   <input
@@ -93,7 +93,7 @@ const Edit = () => {
                   <input
                     type="submit"
                     value="Update"
-                    className="btn btn-dark"
+                    className="btn btn-dark btn-main"
                   />
                   <Link to="/" className="btn btn-danger ml-3 ">
                     Cancel

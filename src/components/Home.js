@@ -17,12 +17,12 @@ const Home = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-12 my-5 text-right">
-          <Link to="add" className="btn btn-outline-dark">
+          <Link to="add" className="btn btn-main btn-hover text-white">
             Add Contact
           </Link>
         </div>
         <div className="col-md-9 mx-auto">
-          <table className="table table-hover">
+          <table className="table ">
             <thead className="text-white bg-dark text-center">
               <tr>
                 <th scope="col">#</th>
@@ -32,7 +32,7 @@ const Home = () => {
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-white">
               {contacts.map((contact, id) => {
                 return (
                   <tr key={id}>
